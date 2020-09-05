@@ -10,7 +10,7 @@ int main()
 	BirthdayParty myParty = BirthdayParty(4);
 
 	//test key
-	int key = myParty.hash("ctor", "boner");
+	int key = myParty.hash("ctor", "boogers");
 
 	std::cout<< "KEY IS:" << key;
 	tf1 = myParty.addInvitee("bobby", "joe", "wonderful");
@@ -18,7 +18,9 @@ int main()
 
 	std::cout << "\n\n__________________\n\n" << "TF1: " << tf1 <<std::endl<< "TF2: " << tf2<<std::endl; 
 
-	std::cout << "\n\n BONER: " << myParty.makeLower("BONER");
+	std::cout << "\n\n BOOGDERS: " << myParty.makeLower("Boogers") << std::endl <<"____________________________________\n";
+
+	std::cout << "Compare Andy to jeanne: " << myParty.stringCompare("jeanne", "jeanne") << std::endl;
 
 	std::cout << "-------------end birthday party---------------\n";
 

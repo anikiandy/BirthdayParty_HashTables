@@ -87,11 +87,34 @@ bool BirthdayParty::addInvitee(const std::string& firstName, const std::string& 
 int BirthdayParty::stringCompare(const std::string compare, std::string to) //compare 2 strings return 1 if compare comes first, 2 if to comes first, and 0 if theyre the same
 {
 	//convertcase
-
+	std::string s1 = makeLower(compare);
+	std::string s2 = makeLower(to);
 	//check for same 
-	
+	if (s1.compare(s2) == 0) return 0;//return 0 if the strings are the same
 	//find which string is longest
-	return 0;
+	if (int(s1.length()) > int(s2.length())) //if compare string is longer use length of to string as iterator
+	{
+		for (int i = 0; i < int(s2.length()); i++)
+		{
+			if (int(s1[i]) < int(s2[i])) return 1; //if 'i' char in compare is lower than 'i' char in to then compare comes first(return 1)
+			else if (int(s1[i]) > int(s2[i])) return 2;// if 'i' char in compare is higher than 'i' char in to then to comes first (return 2)
+			// it the chars are the same then continue
+		}
+		//iterated through all of the shorter word and all chars were the same, so the longer word (s1) comes second
+		return 2; 
+	}
+	else// s2 is longer than or equal to so use s1 length as iterator end
+	{
+		for (int i = 0; i < int(s1.length()); i++)
+		{
+			if (int(s1[i]) < int(s2[i])) return 1; //if 'i' char in compare is lower than 'i' char in to then compare comes first(return 1)
+			else if (int(s1[i]) > int(s2[i])) return 2;// if 'i' char in compare is higher than 'i' char in to then to comes first (return 2)
+			// it the chars are the same then continue
+		}
+		//iterated through all of the shorter word and all chars were the same, so the longer word (s1) comes second
+		return 1;
+	}
+	return 7; //we should never get here. if we did, something is broken;
 }
 std::string BirthdayParty::makeLower(std::string s)
 {
@@ -100,4 +123,4 @@ std::string BirthdayParty::makeLower(std::string s)
 		s[i] = tolower(s[i]);
 	}
 	return s;
-}
+}//take string and return string in all lowercase

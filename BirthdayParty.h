@@ -6,6 +6,7 @@ struct Bucket
 {
 	std::string firstName;
 	std::string lastName;
+	BirthdayType type;
 	Bucket *next;
 };
 class BirthdayParty
@@ -22,8 +23,8 @@ public:
 	bool noInvitees() const; // Return true if the BirthdayParty list
 	// is empty, otherwise false.
 	int whosOnTheGuestList() const; // Return the number of players
-	
-		// the BirthdayParty list.
+	// the BirthdayParty list.
+
 	bool addInvitee(const std::string& firstName, const std::string&lastName, const BirthdayType& value);
 	// If the full name (both the first and last name) is not equal
 	// to any full name currently in the list then add it and return

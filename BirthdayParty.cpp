@@ -29,7 +29,7 @@ int BirthdayParty::hash(std::string first, std::string last)//hash function
 	int key=0;
 	std::string s = first + last;
 	
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < int(s.length()); i++)
 	{
 		key += int (s[i]);
 	}
@@ -81,6 +81,23 @@ bool BirthdayParty::addInvitee(const std::string& firstName, const std::string& 
 		}
 		
 	}
+	return false;
+}
 
+int BirthdayParty::stringCompare(const std::string compare, std::string to) //compare 2 strings return 1 if compare comes first, 2 if to comes first, and 0 if theyre the same
+{
+	//convertcase
 
+	//check for same 
+	
+	//find which string is longest
+	return 0;
+}
+std::string BirthdayParty::makeLower(std::string s)
+{
+	for (int i = 0; i < int(s.length()); i++)
+	{
+		s[i] = tolower(s[i]);
+	}
+	return s;
 }

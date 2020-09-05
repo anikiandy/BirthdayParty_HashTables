@@ -18,6 +18,8 @@ int main()
 
 	std::cout << "\n\n__________________\n\n" << "TF1: " << tf1 <<std::endl<< "TF2: " << tf2<<std::endl; 
 
+	std::cout << "\n\n BONER: " << myParty.makeLower("BONER");
+
 	std::cout << "-------------end birthday party---------------\n";
 
 	return 0;

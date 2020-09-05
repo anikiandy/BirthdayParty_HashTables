@@ -4,7 +4,7 @@
 
 int main()
 {
-	bool tf1, tf2;
+	bool tf1, tf2, tf3;
 	std::cout << "-------------start birthday party---------------\n";
 	//make a birthday party list
 	BirthdayParty myParty = BirthdayParty(4);
@@ -15,8 +15,9 @@ int main()
 	std::cout<< "KEY IS:" << key;
 	tf1 = myParty.addInvitee("bobby", "joe", "wonderful");
 	tf2 = myParty.addInvitee("bobby", "joe", "wonderful");
+	tf3 = myParty.addInvitee("jonny", "Dingdong", "wallace");
 
-	std::cout << "\n\n__________________\n\n" << "TF1: " << tf1 <<std::endl<< "TF2: " << tf2<<std::endl; 
+	std::cout << "\n\n__________________\n\n" << "TF1: " << tf1 <<std::endl<< "TF2: " << tf2<<std::endl << "TF3: " << tf3<< std::endl ; 
 
 	std::cout << "\n\n BOOGDERS: " << myParty.makeLower("Boogers") << std::endl <<"____________________________________\n";
 

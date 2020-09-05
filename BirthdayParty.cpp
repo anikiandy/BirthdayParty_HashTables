@@ -67,12 +67,25 @@ bool BirthdayParty::addInvitee(const std::string& firstName, const std::string& 
 	{
 		while (inspect != nullptr)
 		{
-			if (inspect->firstName == firstName && inspect->lastName == lastName)
+			if (makeLower(inspect->firstName) == makeLower(firstName) && makeLower(inspect->lastName) == makeLower(lastName))
 			{
 				delete add;
 				return false;
 			}
-			else if (inspect->next == nullptr)
+			else if (stringCompare(inspect->lastName, add->lastName) == 1 )//add goes before inspect bucket based on last name
+			{
+				//do the add
+				return true;
+			}
+			else if ((stringCompare(inspect->lastName, add->lastName) == 0) && (stringCompare(inspect->firstName, add->firstName) == 1)) // last names are the same so check firstnames
+			{
+				//add goes before insepct based on first name
+			
+					//do the add
+					return true;
+			
+			}
+			else if (inspect->next == nullptr) //hit the end of the linked list for this slot and found no bucket that add should go before
 			{
 				inspect->next = add; //reached the end of the linked list without finding a match. Add name then return true
 				return true;
@@ -84,6 +97,7 @@ bool BirthdayParty::addInvitee(const std::string& firstName, const std::string& 
 	return false;
 }
 
+//This function takes 2 string arguements and compares them alphabetically. Retrun 0 it theyre the same, Return 1 if compare comes first, Return 2 if to comes first
 int BirthdayParty::stringCompare(const std::string compare, std::string to) //compare 2 strings return 1 if compare comes first, 2 if to comes first, and 0 if theyre the same
 {
 	//convertcase
@@ -96,7 +110,7 @@ int BirthdayParty::stringCompare(const std::string compare, std::string to) //co
 	{
 		for (int i = 0; i < int(s2.length()); i++)
 		{
-			if (int(s1[i]) < int(s2[i])) return 1; //if 'i' char in compare is lower than 'i' char in to then compare comes first(return 1)
+			if (int(s1[i]) < int(s2[i])) return 1; //if 'i' char in compare is lo wer than 'i' char in to then compare comes first(return 1)
 			else if (int(s1[i]) > int(s2[i])) return 2;// if 'i' char in compare is higher than 'i' char in to then to comes first (return 2)
 			// it the chars are the same then continue
 		}

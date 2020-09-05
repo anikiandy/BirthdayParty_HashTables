@@ -1,20 +1,24 @@
 #include <string>
 #include <iostream>
 typedef std::string BirthdayType;
+
+struct Bucket
+{
+	std::string firstName;
+	std::string lastName;
+	Bucket *next;
+};
 class BirthdayParty
 {
 private:
-	struct Bucket
-	{
-		std::string firstName;
-		std::string lastName;
-		bool isEmpty; 
-		Bucket *next;
-	};
-	Bucket list[];
+	bool isEmpty;
+	int slots;
+	Bucket *list;
 
 public:
-	BirthdayParty(); // Create an empty BirthdayParty list
+	BirthdayParty(int n); // Create an empty BirthdayParty list
+	~BirthdayParty(); //destructor 
+	int hash(std::string first, std::string last);//hash function
 	bool noInvitees() const; // Return true if the BirthdayParty list
 	// is empty, otherwise false.
 	int whosOnTheGuestList() const; // Return the number of players

@@ -1,7 +1,18 @@
-
+#include <string>
+#include <iostream>
 typedef std::string BirthdayType;
 class BirthdayParty
 {
+private:
+	struct Bucket
+	{
+		std::string firstName;
+		std::string lastName;
+		bool isEmpty; 
+		Bucket *next;
+	};
+	Bucket list[];
+
 public:
 	BirthdayParty(); // Create an empty BirthdayParty list
 	bool noInvitees() const; // Return true if the BirthdayParty list

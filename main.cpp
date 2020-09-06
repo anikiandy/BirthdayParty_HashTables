@@ -34,6 +34,14 @@ int main()
 
 	std::cout << "Compare Andy to jeanne: " << myParty.stringCompare("jeanne", "jeanne") << std::endl;
 	std::cout << "how many people on list: " << myParty.whosOnTheGuestList() << std::endl;
+	for (int n = 0; n < theLastDance.whosOnTheGuestList(); n++)
+	{
+		string first;
+		string last;
+		int val;
+		theLastDance.selectInvitee(n, first, last, val);
+		cout << first << " " << last << " " << val << endl;
+	}
 	std::cout << "-------------end birthday party---------------\n";
 
 	return 0;

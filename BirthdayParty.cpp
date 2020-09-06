@@ -89,13 +89,13 @@ bool BirthdayParty::addInvitee(const std::string& firstName, const std::string& 
 			else if (stringCompare(makeLower(inspect->lastName), makeLower(add->lastName)) == 1)//add goes before inspect bucket based on last name
 			{
 				add->next = inspect;
-				if (trailing != inspect) trailing->next = add;
+				trailing->next = add;
 				return true;
 			}
 			else if ((stringCompare(makeLower(inspect->lastName), makeLower(add->lastName)) == 0) && (stringCompare(makeLower(inspect->firstName), makeLower(add->firstName)) == 1)) // last names are the same so check firstnames
 			{
 				add->next = inspect;
-				if (trailing != inspect) trailing->next = add;
+				trailing->next = add;
 				std::cout << "firstname thing";
 				return true;
 			

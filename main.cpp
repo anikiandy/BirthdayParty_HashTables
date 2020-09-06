@@ -29,9 +29,6 @@ int main()
 	tf2 = myParty.addInvitee("mobby", "joe", "wonderful");
 	std::cout << "\n count(6): " << myParty.whosOnTheGuestList() << std::endl;
 
-	std::cout << "\n\n__________________\n\n" << "TF1: " << tf1 <<std::endl<< "TF2: " << tf2<<std::endl << "TF3: " << tf3<< std::endl ; 
-
-	std::cout << "\n\n BOOGDERS: " << myParty.makeLower("Boogers") << std::endl <<"____________________________________\n";
 
 	std::cout << "Compare Andy to jeanne: " << myParty.stringCompare("jeanne", "jeanne") << std::endl;
 	std::cout << "how many people on list: " << myParty.whosOnTheGuestList() << std::endl;

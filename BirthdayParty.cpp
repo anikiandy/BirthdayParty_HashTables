@@ -13,11 +13,22 @@ BirthdayParty::BirthdayParty() // Create an empty BirthdayParty list
 
 BirthdayParty::~BirthdayParty()//destructor 
 {
-	for (int i = 0; i < slots; i++)
+	Bucket *del, *mark;
+	for (int i = 0; i < slots; i++) //traverse slots looking for occupied slots
 	{
 		if (list[i].next != nullptr)
 		{
-			delete list[i].next;
+			mark = list[i].next;
+			del = mark;
+			list->next = nullptr; //point slot to 
+			while (mark != nullptr)
+			{
+				mark = mark->next;
+				delete del;
+				del = mark;
+				std::cout << " deleted something \n";
+				
+			}//delete all buckets in this slot
 		}
 	}
 }

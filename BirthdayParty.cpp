@@ -34,7 +34,7 @@ int BirthdayParty::hash(std::string first, std::string last)//hash function
 		key += int (s[i]);
 	}
 	key = key % slots;
-
+	std::cout << "\n Hashing to slot: " << key << std::endl; 
 	return key;
 }
 
@@ -52,6 +52,7 @@ bool BirthdayParty::addInvitee(const std::string& firstName, const std::string& 
 {
 	int key = hash(firstName, lastName);//hash name to get key
 	Bucket* inspect = list[key].next;
+	Bucket* trailing;
 	Bucket* add = new Bucket;
 	add->firstName = firstName;
 	add->lastName = lastName;
@@ -63,8 +64,20 @@ bool BirthdayParty::addInvitee(const std::string& firstName, const std::string& 
 		list[key].next = add; // point to new entry 
 		return true;
 	}
+	else if (stringCompare(makeLower(inspect->lastName), makeLower(add->lastName)) == 1)//if add goes before first node
+	{
+		add->next = inspect;
+		list[key].next = add;
+	}
+	else if (makeLower(inspect->firstName) == makeLower(firstName) && makeLower(inspect->lastName) == makeLower(lastName))
+	{
+		delete add;
+		return false;
+	}
 	else //traverse list looking for end or match
 	{
+		trailing = inspect;
+		inspect = inspect->next;
 		while (inspect != nullptr)
 		{
 			if (makeLower(inspect->firstName) == makeLower(firstName) && makeLower(inspect->lastName) == makeLower(lastName))
@@ -72,26 +85,26 @@ bool BirthdayParty::addInvitee(const std::string& firstName, const std::string& 
 				delete add;
 				return false;
 			}
-			else if (stringCompare(inspect->lastName, add->lastName) == 1 )//add goes before inspect bucket based on last name
+			
+			else if (stringCompare(makeLower(inspect->lastName), makeLower(add->lastName)) == 1)//add goes before inspect bucket based on last name
 			{
-				//do the add
+				add->next = inspect;
+				if (trailing != inspect) trailing->next = add;
 				return true;
 			}
-			else if ((stringCompare(inspect->lastName, add->lastName) == 0) && (stringCompare(inspect->firstName, add->firstName) == 1)) // last names are the same so check firstnames
+			else if ((stringCompare(makeLower(inspect->lastName), makeLower(add->lastName)) == 0) && (stringCompare(makeLower(inspect->firstName), makeLower(add->firstName)) == 1)) // last names are the same so check firstnames
 			{
-				//add goes before insepct based on first name
-			
-					//do the add
-					return true;
-			
-			}
-			else if (inspect->next == nullptr) //hit the end of the linked list for this slot and found no bucket that add should go before
-			{
-				inspect->next = add; //reached the end of the linked list without finding a match. Add name then return true
+				add->next = inspect;
+				if (trailing != inspect) trailing->next = add;
+				std::cout << "firstname thing";
 				return true;
+			
 			}
+			trailing = inspect;
 			inspect = inspect->next;
 		}
+		trailing->next = add; //got through while loop. inspect is on nullptr so point trailing to add
+		return true;
 		
 	}
 	return false;
@@ -138,3 +151,23 @@ std::string BirthdayParty::makeLower(std::string s)
 	}
 	return s;
 }//take string and return string in all lowercase
+
+int BirthdayParty::whosOnTheGuestList() const // Return the number of players
+{
+	int count = 0;
+	Bucket *marker;
+	for (int i = 0; i < slots; i++)
+	{
+		if (list[i].next != nullptr)
+		{
+			marker = list[i].next;
+			while (marker != nullptr)
+			{
+				count++;
+				marker = marker->next;
+			}
+		}
+	}
+	return count;
+
+}

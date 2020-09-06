@@ -24,7 +24,7 @@ BirthdayParty::~BirthdayParty()//destructor
 
 int BirthdayParty::hash(std::string first, std::string last)//hash by first letter of last name
 {
-	int key = tolower(first[0]) - 97;
+	int key = tolower(last[0]) - 97;
 	return key;
 }
 
@@ -162,20 +162,19 @@ int BirthdayParty::whosOnTheGuestList() const // Return the number of players
 
 }
 
-//This function is a terrible use of a hash table... start from the top of the has table array and iterate down until you reach ith 
+//This function is a terrigble use of a hash table... start from the top of the has table array and iterate down until you reach ith 
 bool BirthdayParty::selectInvitee(int i, std::string& firstName, std::string& lastName, BirthdayType& value) const
 {
 	int counter = 0;
 	Bucket *inspect;
-	for (int j = i; j < slots; j++)
+	for (int j = 0; j < slots; j++)
 	{
 		if (list[j].next != nullptr)//something is in the slot 
 		{
 			inspect = list[j].next; 
 			//iterate down the linked list increasing counter
 			while (inspect != nullptr)
-			{
-				counter++; 
+			{ 
 				if (counter == i)
 				{
 					firstName = inspect->firstName;
@@ -185,6 +184,7 @@ bool BirthdayParty::selectInvitee(int i, std::string& firstName, std::string& la
 				}
 				else
 				{
+					counter++;
 					inspect = inspect->next;
 				}
 			}

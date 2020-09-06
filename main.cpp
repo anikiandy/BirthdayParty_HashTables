@@ -38,5 +38,14 @@ int main()
 
 	std::cout << "-------------end birthday party---------------\n";
 
+	for (int n = 0; n < myParty.whosOnTheGuestList(); n++)
+	{
+		std::string first;
+		std::string last;
+		BirthdayType val;
+		myParty.selectInvitee(n, first, last, val);
+		std::cout << first << " " << last << " " << val << std::endl;
+	}
+
 	return 0;
 }

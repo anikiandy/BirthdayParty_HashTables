@@ -13,11 +13,11 @@ class BirthdayParty
 {
 private:
 	bool isEmpty;
-	int slots;
-	Bucket *list;
+	int slots = 26;
+	Bucket list[26];
 
 public:
-	BirthdayParty(int n); // Create an empty BirthdayParty list
+	BirthdayParty(); // Create an empty BirthdayParty list
 	~BirthdayParty(); //destructor 
 	int hash(std::string first, std::string last);//hash function
 	bool noInvitees() const; // Return true if the BirthdayParty list

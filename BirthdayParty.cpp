@@ -2,12 +2,10 @@
 #include <iostream>
 #include <string>
 
-BirthdayParty::BirthdayParty(int n) // Create an empty BirthdayParty list
+BirthdayParty::BirthdayParty() // Create an empty BirthdayParty list
 {
-	list = new Bucket[n];
 	isEmpty = true;
-	slots = n;
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < slots; i++)
 	{
 		list[i].next = nullptr;
 	}
@@ -24,23 +22,14 @@ BirthdayParty::~BirthdayParty()//destructor
 	}
 }
 
-int BirthdayParty::hash(std::string first, std::string last)//hash function
+int BirthdayParty::hash(std::string first, std::string last)//hash by first letter of last name
 {
-	int key=0;
-	std::string s = first + last;
-	
-	for (int i = 0; i < int(s.length()); i++)
-	{
-		key += int (s[i]);
-	}
-	key = key % slots;
-	std::cout << "\n Hashing to slot: " << key << std::endl; 
+	int key = tolower(first[0]) - 97;
 	return key;
 }
 
 bool BirthdayParty::noInvitees() const
 {
-
 	for (int i = 0; i < slots; i++)
 	{
 		if (list[i].next != nullptr) return false;
@@ -51,6 +40,7 @@ bool BirthdayParty::noInvitees() const
 bool BirthdayParty::addInvitee(const std::string& firstName, const std::string& lastName, const BirthdayType& value)
 {
 	int key = hash(firstName, lastName);//hash name to get key
+	std::cout << "Hashing to slot #: " << key << std::endl;
 	Bucket* inspect = list[key].next;
 	Bucket* trailing;
 	Bucket* add = new Bucket;
@@ -171,3 +161,39 @@ int BirthdayParty::whosOnTheGuestList() const // Return the number of players
 	return count;
 
 }
+
+//This function is a terrible use of a hash table... start from the top of the has table array and iterate down until you reach ith 
+bool BirthdayParty::selectInvitee(int i, std::string& firstName, std::string& lastName, BirthdayType& value) const
+{
+	int counter = 0;
+	Bucket *inspect;
+	for (int j = i; j < slots; j++)
+	{
+		if (list[j].next != nullptr)//something is in the slot 
+		{
+			inspect = list[j].next; 
+			//iterate down the linked list increasing counter
+			while (inspect != nullptr)
+			{
+				counter++; 
+				if (counter == i)
+				{
+					firstName = inspect->firstName;
+					lastName = inspect->lastName;
+					value = inspect->type;
+					return true;
+				}
+				else
+				{
+					inspect = inspect->next;
+				}
+			}
+		}
+	}
+	return false; //counter never reaches i so return false
+}
+// If 0 <= i < size(), copy into firstName, lastName and value
+// parameters the corresponding information of the element at
+// position i in the list and return true. Otherwise, leave the
+// parameters unchanged and return false. (See below for details
+// about this function.)

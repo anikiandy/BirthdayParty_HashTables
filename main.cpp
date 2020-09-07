@@ -25,6 +25,8 @@ int main()
 	tf3 = myParty.addInvitee("andy", "shiraki", "doingo");
 	std::cout << "\n count(4): " << myParty.whosOnTheGuestList() << std::endl;
 	tf3 = myParty.addInvitee("bolo", "tumpkins", "jojo");
+	tf3 = myParty.addInvitee("BUndy", "szrraki", "doingo");
+	tf3 = myParty.addInvitee("Fredrick", "Shinoko", "doingo");
 	std::cout << "\n count(5): " << myParty.whosOnTheGuestList() << std::endl;
 	tf2 = myParty.addInvitee("mobby", "joe", "wonderful");
 	std::cout << "\n count(6): " << myParty.whosOnTheGuestList() << std::endl;

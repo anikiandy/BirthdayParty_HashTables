@@ -65,7 +65,7 @@ bool BirthdayParty::addInvitee(const std::string& firstName, const std::string& 
 		list[key].next = add; // point to new entry 
 		return true;
 	}
-	else if (stringCompare(makeLower(inspect->lastName), makeLower(add->lastName)) == 1)//if add goes before first node
+	else if (stringCompare(makeLower(add->lastName), makeLower(inspect->lastName)) == 1)//if add goes before first node
 	{
 		add->next = inspect;
 		list[key].next = add;

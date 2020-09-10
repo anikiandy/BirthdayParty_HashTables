@@ -21,9 +21,10 @@ public:
 	~BirthdayParty(); //destructor 
 	int hash(std::string first, std::string last);//hash function
 	bool noInvitees() const; // Return true if the BirthdayParty list
-	// is empty, otherwise false.
+							 // is empty, otherwise false.
+	
 	int whosOnTheGuestList() const; // Return the number of players
-	// the BirthdayParty list.
+									// the BirthdayParty list.
 	int stringCompare(const std::string compare, const std::string to); //compare 2 name buckets return int to indicate alphabetical order
 	std::string makeLower(std::string s); // use in string compare to make all lowercase
 	bool addInvitee(const std::string& firstName, const std::string&lastName, const BirthdayType& value);
@@ -49,6 +50,7 @@ public:
 	// return true in this case. If the full name is not equal to
 	// any full name currently in the list then add it and return
 	// true. In fact, this function always returns true.
+
 	bool dropFromGuestList(const std::string& firstName, const std::string& lastName);
 	// If the full name is equal to a full name currently in the
 	// list, remove the full name and value from the list and return

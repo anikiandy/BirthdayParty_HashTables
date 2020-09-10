@@ -51,15 +51,15 @@ bool BirthdayParty::noInvitees() const
 bool BirthdayParty::addInvitee(const std::string& firstName, const std::string& lastName, const BirthdayType& value)
 {
 	int key = hash(firstName, lastName);//hash name to get key
-	std::cout << "Hashing to slot #: " << key << std::endl;
-	Bucket* inspect = list[key].next;
-	Bucket* trailing;
-	Bucket* add = new Bucket;
+	Bucket* inspect = list[key].next; //point inspect pointer to the correct slot
+	Bucket* trailing;//trail inspect pointer
+	Bucket* add = new Bucket; //make new invitee
 	add->firstName = firstName;
 	add->lastName = lastName;
 	add->type = value;
 	add->next = nullptr;
-	//check if the bucket is empty
+
+	//check if the first bucket is empty
 	if (inspect == nullptr) //means the slot is empty
 	{
 		list[key].next = add; // point to new entry 
@@ -70,18 +70,18 @@ bool BirthdayParty::addInvitee(const std::string& firstName, const std::string& 
 		add->next = inspect;
 		list[key].next = add;
 	}
-	else if (makeLower(inspect->firstName) == makeLower(firstName) && makeLower(inspect->lastName) == makeLower(lastName))
+	else if (makeLower(inspect->firstName) == makeLower(firstName) && makeLower(inspect->lastName) == makeLower(lastName)) //if it is the same as the first node
 	{
 		delete add;
 		return false;
 	}
-	else //traverse list looking for end or match
+	else //advance inspection and point trailing pointer to previous node
 	{
 		trailing = inspect;
 		inspect = inspect->next;
-		while (inspect != nullptr)
+		while (inspect != nullptr)//traverse linked list
 		{
-			if (makeLower(inspect->firstName) == makeLower(firstName) && makeLower(inspect->lastName) == makeLower(lastName))
+			if (makeLower(inspect->firstName) == makeLower(firstName) && makeLower(inspect->lastName) == makeLower(lastName)) //if find exact match delete add
 			{
 				delete add;
 				return false;
@@ -104,7 +104,8 @@ bool BirthdayParty::addInvitee(const std::string& firstName, const std::string& 
 			trailing = inspect;
 			inspect = inspect->next;
 		}
-		trailing->next = add; //got through while loop. inspect is on nullptr so point trailing to add
+		//got through while loop without finding an entry which comes after add alphabetically. inspect is on nullptr so point trailing to add
+		trailing->next = add; 
 		return true;
 		
 	}
@@ -176,6 +177,7 @@ int BirthdayParty::whosOnTheGuestList() const // Return the number of players
 //This function is a terrigble use of a hash table... start from the top of the has table array and iterate down until you reach ith 
 bool BirthdayParty::selectInvitee(int i, std::string& firstName, std::string& lastName, BirthdayType& value) const
 {
+	
 	int counter = 0;
 	Bucket *inspect;
 	for (int j = 0; j < slots; j++)
@@ -201,10 +203,24 @@ bool BirthdayParty::selectInvitee(int i, std::string& firstName, std::string& la
 			}
 		}
 	}
-	return false; //counter never reaches i so return false
+	return false; //counter never reaches i (i > list size) so return false
 }
-// If 0 <= i < size(), copy into firstName, lastName and value
-// parameters the corresponding information of the element at
-// position i in the list and return true. Otherwise, leave the
-// parameters unchanged and return false. (See below for details
-// about this function.)
+
+bool BirthdayParty::modifyInvitee(const std::string& firstName, const std::string& lastName, const BirthdayType& value)
+{
+	int key = hash(firstName, lastName);
+	Bucket *inspect;
+	inspect = list[key].next;
+
+	while (inspect != nullptr)
+	{
+		if (inspect->lastName == lastName && inspect->firstName == firstName)
+		{
+			inspect->type = value;
+			return true;
+		}
+		inspect = inspect->next;
+	}
+
+	return false; 
+}

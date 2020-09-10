@@ -56,6 +56,7 @@ public:
 	// list, remove the full name and value from the list and return
 	// true. Otherwise, make no change to the list and return
 	// false.
+
 	bool personOnGuestList(const std::string& firstName, const std::string& lastName) const;
 	// Return true if the full name is equal to a full name
 	// currently in the list, otherwise false.

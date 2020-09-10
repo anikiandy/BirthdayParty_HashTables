@@ -31,6 +31,7 @@ int main()
 	tf2 = myParty.addInvitee("mobby", "joe", "wonderful");
 	std::cout << "\n count(6): " << myParty.whosOnTheGuestList() << std::endl;
 	myParty.modifyInvitee("andy", "shiraki", "seventy2");
+	myParty.dropFromGuestList("Fredrick", "Shinoko");
 
 	std::cout << "Compare Andy to jeanne: " << myParty.stringCompare("jeanne", "jeanne") << std::endl;
 	std::cout << "how many people on list: " << myParty.whosOnTheGuestList() << std::endl;

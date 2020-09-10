@@ -222,5 +222,35 @@ bool BirthdayParty::modifyInvitee(const std::string& firstName, const std::strin
 		inspect = inspect->next;
 	}
 
-	return false; 
+	return false; //unable to find match return false
 }
+
+bool BirthdayParty::dropFromGuestList(const std::string& firstName, const std::string& lastName)
+{
+	int key = hash(firstName, lastName);
+	Bucket *del, *trailing;
+	del = list[key].next;
+	trailing = del;
+	while (del != nullptr)
+	{
+		if (del->firstName == firstName && del->lastName == lastName)
+		{
+			if (list[key].next == del)//found name in first node in slot 
+			{
+				list[key].next = del->next;
+				delete del;
+				return true;
+			}
+			trailing = del->next;//point trailing over del and delete del
+			delete del;
+			return true;
+		}
+		trailing = del;//advance pointers
+		del = del->next;
+	}
+	return false;//hit end of linked list without match
+}
+// If the full name is equal to a full name currently in the
+// list, remove the full name and value from the list and return
+// true. Otherwise, make no change to the list and return
+// false.

@@ -19,7 +19,7 @@ private:
 public:
 	BirthdayParty(); // Create an empty BirthdayParty list
 	~BirthdayParty(); //destructor 
-	int hash(std::string first, std::string last);//hash function
+	int hash(std::string first, std::string last) const;//hash function
 	bool noInvitees() const; // Return true if the BirthdayParty list
 							 // is empty, otherwise false.
 	

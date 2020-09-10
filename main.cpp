@@ -32,6 +32,8 @@ int main()
 	std::cout << "\n count(6): " << myParty.whosOnTheGuestList() << std::endl;
 	myParty.modifyInvitee("andy", "shiraki", "seventy2");
 	myParty.dropFromGuestList("Fredrick", "Shinoko");
+	myParty.addOrModify("mobby", "joe", "turtles");
+	myParty.addOrModify("leonardo", "mutant", "boxers");
 
 	std::cout << "Compare Andy to jeanne: " << myParty.stringCompare("jeanne", "jeanne") << std::endl;
 	std::cout << "how many people on list: " << myParty.whosOnTheGuestList() << std::endl;

@@ -33,7 +33,7 @@ BirthdayParty::~BirthdayParty()//destructor
 	}
 }
 
-int BirthdayParty::hash(std::string first, std::string last)//hash by first letter of last name
+int BirthdayParty::hash(std::string first, std::string last) const//hash by first letter of last name
 {
 	int key = tolower(last[0]) - 97;
 	return key;
@@ -250,7 +250,39 @@ bool BirthdayParty::dropFromGuestList(const std::string& firstName, const std::s
 	}
 	return false;//hit end of linked list without match
 }
-// If the full name is equal to a full name currently in the
-// list, remove the full name and value from the list and return
-// true. Otherwise, make no change to the list and return
-// false.
+
+bool BirthdayParty::personOnGuestList(const std::string& firstName, const std::string& lastName) const
+{
+	int key = hash(firstName, lastName);
+	Bucket *inspect = list[key].next;
+
+	while (inspect != nullptr)
+	{
+		if (inspect->firstName == firstName && inspect->lastName == lastName)
+		{
+			return true;
+		}
+		inspect = inspect->next;
+	}
+	return false;
+}
+// Return true if the full name is equal to a full name
+// currently in the list, otherwise false.
+
+bool BirthdayParty::addOrModify(const std::string& firstName, const std::string&lastName, const BirthdayType& value)
+{
+	if (personOnGuestList(firstName, lastName))
+	{
+		modifyInvitee(firstName, lastName, value);
+	}
+	else
+		addInvitee(firstName, lastName, value);
+
+	return true;
+}
+// If full name is equal to a name currently in the list, then
+// make that full name no longer map to the value it currently
+// maps to, but instead map to the value of the third parameter;
+// return true in this case. If the full name is not equal to
+// any full name currently in the list then add it and return
+// true. In fact, this function always returns true.

@@ -280,9 +280,13 @@ bool BirthdayParty::addOrModify(const std::string& firstName, const std::string&
 
 	return true;
 }
-// If full name is equal to a name currently in the list, then
-// make that full name no longer map to the value it currently
-// maps to, but instead map to the value of the third parameter;
-// return true in this case. If the full name is not equal to
-// any full name currently in the list then add it and return
-// true. In fact, this function always returns true.
+
+bool BirthdayParty::checkGuestList(const std::string& firstName, const std::string& lastName, BirthdayType& value) const
+{
+	if (personOnGuestList(firstName, lastName))
+	{
+		value = "p";
+		return true;
+	}
+	else return false;
+}

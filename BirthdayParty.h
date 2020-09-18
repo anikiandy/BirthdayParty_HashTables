@@ -60,11 +60,13 @@ public:
 	bool personOnGuestList(const std::string& firstName, const std::string& lastName) const;
 	// Return true if the full name is equal to a full name
 	// currently in the list, otherwise false.
+
 	bool checkGuestList(const std::string& firstName, const std::string& lastName, BirthdayType& value) const;
 	// If the full name is equal to a full name currently in the
 	// list, set value to the value in the list that that full name
 	// maps to, and return true. Otherwise, make no change to the
 	// value parameter of this function and return false.
+
 	bool selectInvitee(int i, std::string& firstName, std::string& lastName, BirthdayType& value) const;
 	// If 0 <= i < size(), copy into firstName, lastName and value
 	// parameters the corresponding information of the element at

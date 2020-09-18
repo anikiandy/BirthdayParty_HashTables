@@ -75,4 +75,7 @@ public:
 	// about this function.)
 	void changeGuestList(BirthdayParty& other);
 	// Exchange the contents of this list with the other one.
+
+	bool GetBirthdayType(const std::string& firstName, const std::string&lastName, BirthdayType& value) const;
+	//update value with BirthdayType of atendee. return true if successful
 };

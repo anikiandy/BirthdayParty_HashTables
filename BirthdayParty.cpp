@@ -174,7 +174,6 @@ int BirthdayParty::whosOnTheGuestList() const // Return the number of players
 
 }
 
-//This function is a terrigble use of a hash table... start from the top of the has table array and iterate down until you reach ith 
 bool BirthdayParty::selectInvitee(int i, std::string& firstName, std::string& lastName, BirthdayType& value) const
 {
 	
@@ -285,8 +284,28 @@ bool BirthdayParty::checkGuestList(const std::string& firstName, const std::stri
 {
 	if (personOnGuestList(firstName, lastName))
 	{
-		value = "p";
+
+		return GetBirthdayType(firstName, lastName, value);
 		return true;
 	}
 	else return false;
 }
+
+
+bool BirthdayParty::GetBirthdayType(const std::string& firstName, const std::string&lastName, BirthdayType& value) const
+{
+	int key = hash(firstName, lastName);
+	Bucket *inspect;
+	inspect = list[key].next;
+	while (inspect != nullptr)
+	{
+		if (firstName == inspect->firstName && lastName == inspect->lastName)
+		{
+			value = inspect->type;
+			return true;
+		}
+		inspect = inspect->next;
+	}
+	return false;
+}
+//update value with BirthdayType of atendee. return true if successful

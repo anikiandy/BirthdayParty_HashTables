@@ -35,8 +35,11 @@ int main()
 	myParty.addOrModify("mobby", "joe", "turtles");
 	myParty.addOrModify("leonardo", "mutant", "boxers");
 
-	std::cout << "Compare Andy to jeanne: " << myParty.stringCompare("jeanne", "jeanne") << std::endl;
-	std::cout << "how many people on list: " << myParty.whosOnTheGuestList() << std::endl;
+	BirthdayType testType;
+
+	myParty.checkGuestList("andy", "shiraki", testType);
+
+	std::cout << "Test Birthday TYpe:   "<< testType << std::endl;
 
 	std::cout << "-------------end birthday party---------------\n";
 

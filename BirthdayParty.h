@@ -18,6 +18,7 @@ private:
 
 public:
 	BirthdayParty(); // Create an empty BirthdayParty list
+	BirthdayParty (const BirthdayParty& other);
 	~BirthdayParty(); //destructor 
 	int hash(std::string first, std::string last) const;//hash function
 	bool noInvitees() const; // Return true if the BirthdayParty list
@@ -78,4 +79,7 @@ public:
 
 	bool GetBirthdayType(const std::string& firstName, const std::string&lastName, BirthdayType& value) const;
 	//update value with BirthdayType of atendee. return true if successful
+
+
+	//copy constructor
 };

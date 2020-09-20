@@ -11,6 +11,38 @@ BirthdayParty::BirthdayParty() // Create an empty BirthdayParty list
 	}
 }
 
+BirthdayParty:: BirthdayParty(const BirthdayParty& other) //copy constructor
+{
+	for (int i = 0; i < slots; i++) //initialize hash table
+	{
+		list[i].next = nullptr;
+	}
+
+	Bucket *inspect, *copyBucket, *copyPointer;
+	for (int i = 0; i < this->slots; i++)//iterate down slots to copy linked lists
+	{
+		if (other.list[i].next != nullptr)// if this slot is not empty copy the linked list to new BirthdayParty
+		{
+			inspect = other.list[i].next; //put inspect on node
+			copyPointer = &list[i];
+			while (inspect != nullptr)
+			{
+				//copy node contents to node in new list
+				copyBucket = new Bucket;
+				copyBucket->firstName = inspect->firstName;
+				copyBucket->lastName = inspect->lastName;
+				copyBucket->type = inspect->type;
+				copyBucket->next = nullptr;
+				
+				copyPointer->next = copyBucket;
+				copyPointer = copyBucket;
+
+				inspect = inspect->next;
+			}
+		}
+		
+	}
+}
 BirthdayParty::~BirthdayParty()//destructor 
 {
 	Bucket *del, *mark;

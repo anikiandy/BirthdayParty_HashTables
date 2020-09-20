@@ -35,6 +35,7 @@ int main()
 	myParty.addOrModify("mobby", "joe", "turtles");
 	myParty.addOrModify("leonardo", "mutant", "boxers");
 
+	BirthdayParty copyParty = BirthdayParty(myParty);
 	BirthdayType testType;
 
 	myParty.checkGuestList("andy", "shiraki", testType);
@@ -43,7 +44,7 @@ int main()
 
 	std::cout << "-------------end birthday party---------------\n";
 
-	for (int n = 0; n < myParty.whosOnTheGuestList(); n++)
+	for (int n = 0; n < copyParty.whosOnTheGuestList(); n++)
 	{
 		std::string first;
 		std::string last;

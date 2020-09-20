@@ -24,7 +24,7 @@ BirthdayParty:: BirthdayParty(const BirthdayParty& other) //copy constructor
 		if (other.list[i].next != nullptr)// if this slot is not empty copy the linked list to new BirthdayParty
 		{
 			inspect = other.list[i].next; //put inspect on node
-			copyPointer = &list[i];
+			copyPointer = &this->list[i];
 			while (inspect != nullptr)
 			{
 				//copy node contents to node in new list

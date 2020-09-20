@@ -28,6 +28,7 @@ public:
 									// the BirthdayParty list.
 	int stringCompare(const std::string compare, const std::string to); //compare 2 name buckets return int to indicate alphabetical order
 	std::string makeLower(std::string s); // use in string compare to make all lowercase
+	const BirthdayParty& operator=(const BirthdayParty& rhs);//assignment operator
 	bool addInvitee(const std::string& firstName, const std::string&lastName, const BirthdayType& value);
 	// If the full name (both the first and last name) is not equal
 	// to any full name currently in the list then add it and return

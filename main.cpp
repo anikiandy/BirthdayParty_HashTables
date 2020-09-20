@@ -36,9 +36,10 @@ int main()
 	myParty.addOrModify("leonardo", "mutant", "boxers");
 
 	BirthdayParty copyParty = BirthdayParty(myParty);
+	myParty.~BirthdayParty();
 	BirthdayType testType;
 
-	myParty.checkGuestList("andy", "shiraki", testType);
+	//myParty.checkGuestList("andy", "shiraki", testType);
 
 	std::cout << "Test Birthday TYpe:   "<< testType << std::endl;
 
@@ -49,9 +50,9 @@ int main()
 		std::string first;
 		std::string last;
 		BirthdayType val;
-		myParty.selectInvitee(n, first, last, val);
+		copyParty.selectInvitee(n, first, last, val);
 		std::cout << first << " " << last << " " << val << std::endl;
 	}
-
+	std::cout << "nothing";
 	return 0;
 }

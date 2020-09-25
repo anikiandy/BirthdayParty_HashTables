@@ -87,3 +87,7 @@ public:
 
 	//copy constructor
 };
+
+bool combineGuestLists(const BirthdayParty & bpOne,
+	const BirthdayParty & bpTwo,
+	BirthdayParty & bpJoined);

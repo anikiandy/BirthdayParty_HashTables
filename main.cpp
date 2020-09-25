@@ -4,6 +4,7 @@
 #include "assert.h"
 
 
+
 int main()
 {
 	bool tf1, tf2, tf3;
@@ -77,5 +78,26 @@ int main()
 		&& dodgers.personOnGuestList("Justin", "Turner")
 		&& dodgers.personOnGuestList("", ""));
 		*/
+
+
+	//test combineguest list
+	BirthdayParty bp1, bp2, bp3;
+	bp1 = BirthdayParty();
+	bp2 = BirthdayParty();
+	bp3 = BirthdayParty();
+	bp1.addInvitee("Kobe", "Bryant", "8");
+	bp1.addInvitee("pau", "gasol", "19");
+	bp2.addInvitee("Kobe", "Bryant", "24");
+	bp2.addInvitee("jojo", "Magnificent", "12");
+	combineGuestLists(bp1, bp2, bp3);
+	
+	for (int n = 0; n < bp3.whosOnTheGuestList(); n++)
+	{
+		std::string first;
+		std::string last;
+		BirthdayType val;
+		bp3.selectInvitee(n, first, last, val);
+		std::cout << first << " " << last << " " << val << std::endl;
+	}
 	return 0;
 }

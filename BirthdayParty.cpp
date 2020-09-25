@@ -366,3 +366,33 @@ void BirthdayParty::changeGuestList(BirthdayParty& other)
 	temp.~BirthdayParty();
 
 }
+
+//non memberfunction to combine 2 lists into the 3rd
+bool combineGuestLists(const BirthdayParty & bpOne,
+	const BirthdayParty & bpTwo,
+	BirthdayParty & bpJoined)
+{
+	bool collision; 
+	bpJoined.~BirthdayParty(); //clear bpJoined
+	bpJoined = bpOne;
+	for (int n = 0; n < bpTwo.whosOnTheGuestList(); n++)
+	{
+		std::string first, last;
+		BirthdayType val, checkVal;
+		bpTwo.selectInvitee(n, first, last, val);
+
+		if (!bpJoined.addInvitee(first, last, val))
+		{
+			//check val
+			bpJoined.selectInvitee(n, first, last, checkVal);
+			if (checkVal != val)
+			{
+				collision = true;
+				bpJoined.dropFromGuestList(first, last);
+			}
+		}
+	}
+		if (collision == true) return false;
+		else return true;
+	
+}

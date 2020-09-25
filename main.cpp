@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "BirthdayParty.h"
+#include "assert.h"
 
 
 int main()
@@ -17,23 +18,22 @@ int main()
 	tf1 = myParty.addInvitee("bobby", "joe", "wonderful");
 	std::cout << "\n count(1): " << myParty.whosOnTheGuestList() << std::endl;
 	tf2 = myParty.addInvitee("bobby", "joe", "wonderful");
-	std::cout << "\n count(1): " << myParty.whosOnTheGuestList() << std::endl;
-	tf3 = myParty.addInvitee("jonny", "Dingdong", "wallace");
-	std::cout << "\n count(2): " << myParty.whosOnTheGuestList() << std::endl;
-	tf3 = myParty.addInvitee("Jeanne", "LIU", "boingo");
-	std::cout << "\n count(3): " << myParty.whosOnTheGuestList() << std::endl;
-	tf3 = myParty.addInvitee("andy", "shiraki", "doingo");
-	std::cout << "\n count(4): " << myParty.whosOnTheGuestList() << std::endl;
-	tf3 = myParty.addInvitee("bolo", "tumpkins", "jojo");
-	tf3 = myParty.addInvitee("BUndy", "szrraki", "doingo");
-	tf3 = myParty.addInvitee("Fredrick", "Shinoko", "doingo");
-	std::cout << "\n count(5): " << myParty.whosOnTheGuestList() << std::endl;
-	tf2 = myParty.addInvitee("mobby", "joe", "wonderful");
-	std::cout << "\n count(6): " << myParty.whosOnTheGuestList() << std::endl;
-	myParty.modifyInvitee("andy", "shiraki", "seventy2");
-	myParty.dropFromGuestList("Fredrick", "Shinoko");
-	myParty.addOrModify("mobby", "joe", "turtles");
-	myParty.addOrModify("leonardo", "mutant", "boxers");
+
+	BirthdayParty theLastDance;
+	theLastDance.addInvitee("Michael", "Jordan", "23");
+	theLastDance.addInvitee("Scottie", "Pippen", "33");
+	theLastDance.addInvitee("Dennis", "Rodman", "91");
+	theLastDance.addInvitee("Luc", "Longley", "13");
+	theLastDance.addInvitee("Ron", "Harper", "9");
+	for (int n = 0; n < theLastDance.whosOnTheGuestList(); n++)
+	{
+		std::string first;
+		std::string last;
+		BirthdayType val;
+		theLastDance.selectInvitee(n, first, last, val);
+		std::cout << first << " " << last << " " << val << std::endl;
+	}
+
 
 	BirthdayParty copyParty = BirthdayParty(myParty);
 	myParty.~BirthdayParty();
@@ -60,5 +60,22 @@ int main()
 		std::cout << first << " " << last << " " << val << std::endl;
 	}
 	std::cout << "nothing";
+
+	/*
+	BirthdayParty dodgers;
+	dodgers.addInvitee("Clayton", "Kershaw", "31.0");
+	dodgers.addInvitee("Cody", "Bellinger", "11.5");
+	assert(!dodgers.personOnGuestList("", ""));
+	dodgers.addInvitee("Mookie", "Betts", "27.0");
+	dodgers.addInvitee("", "", "0.57");
+	dodgers.addInvitee("Justin", "Turner", "20.0");
+	assert(dodgers.personOnGuestList("", ""));
+	dodgers.dropFromGuestList("Mookie", "Betts");
+	assert(dodgers.whosOnTheGuestList() == 4
+		&& dodgers.personOnGuestList("Clayton", "Kershaw")
+		&& dodgers.personOnGuestList("Cody", "Bellinger")
+		&& dodgers.personOnGuestList("Justin", "Turner")
+		&& dodgers.personOnGuestList("", ""));
+		*/
 	return 0;
 }

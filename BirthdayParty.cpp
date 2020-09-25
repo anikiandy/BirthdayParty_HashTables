@@ -1,6 +1,7 @@
 #include "BirthdayParty.h"
 #include <iostream>
 #include <string>
+#include <ctype.h>
 
 BirthdayParty::BirthdayParty() // Create an empty BirthdayParty list
 {
@@ -67,7 +68,6 @@ BirthdayParty::~BirthdayParty()//destructor
 				mark = mark->next;
 				delete del;
 				del = mark;
-				std::cout << " deleted something \n";
 				
 			}//delete all buckets in this slot
 		}
@@ -79,7 +79,7 @@ BirthdayParty::~BirthdayParty()//destructor
 int BirthdayParty::hash(std::string first, std::string last) const//hash by first letter of last name
 {
 	int key = tolower(last[0]) - 97;
-	return key;
+	return key%26;
 }
 
 bool BirthdayParty::noInvitees() const
@@ -193,7 +193,10 @@ std::string BirthdayParty::makeLower(std::string s)
 {
 	for (int i = 0; i < int(s.length()); i++)
 	{
-		s[i] = tolower(s[i]);
+		if (isalpha(s[i]))
+		{
+			s[i] = tolower(s[i]);
+		}
 	}
 	return s;
 }//take string and return string in all lowercase

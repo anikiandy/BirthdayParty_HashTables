@@ -41,7 +41,7 @@ BirthdayParty::BirthdayParty() // Create an empty BirthdayParty list
 	  }
 	  return *this;
 }
-
+  
 BirthdayParty:: BirthdayParty(const BirthdayParty& other) //copy constructor
 {
 	for (int i = 0; i < slots; i++) //initialize hash table
@@ -50,32 +50,7 @@ BirthdayParty:: BirthdayParty(const BirthdayParty& other) //copy constructor
 	}
 
 	*this = other;
-/*
-	Bucket *inspect, *copyBucket, *copyPointer;
-	for (int i = 0; i < this->slots; i++)//iterate down slots to copy linked lists
-	{
-		if (other.list[i].next != nullptr)// if this slot is not empty copy the linked list to new BirthdayParty
-		{
-			inspect = other.list[i].next; //put inspect on node
-			copyPointer = &this->list[i];
-			while (inspect != nullptr)
-			{
-				//copy node contents to node in new list
-				copyBucket = new Bucket;
-				copyBucket->firstName = inspect->firstName;
-				copyBucket->lastName = inspect->lastName;
-				copyBucket->type = inspect->type;
-				copyBucket->next = nullptr;
-				
-				copyPointer->next = copyBucket;
-				copyPointer = copyBucket;
 
-				inspect = inspect->next;
-			}
-		}
-		
-	}
-	*/
 }
 BirthdayParty::~BirthdayParty()//destructor 
 {
@@ -213,6 +188,7 @@ int BirthdayParty::stringCompare(const std::string compare, std::string to) //co
 	}
 	return 7; //we should never get here. if we did, something is broken;
 }
+
 std::string BirthdayParty::makeLower(std::string s)
 {
 	for (int i = 0; i < int(s.length()); i++)
@@ -377,3 +353,13 @@ bool BirthdayParty::GetBirthdayType(const std::string& firstName, const std::str
 	return false;
 }
 //update value with BirthdayType of atendee. return true if successful
+
+void BirthdayParty::changeGuestList(BirthdayParty& other)
+{
+	BirthdayParty temp; 
+	temp = BirthdayParty(other);
+	other = *this;
+	*this = temp;
+	temp.~BirthdayParty();
+
+}

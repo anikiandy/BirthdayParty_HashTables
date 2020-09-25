@@ -37,6 +37,12 @@ int main()
 
 	BirthdayParty copyParty = BirthdayParty(myParty);
 	myParty.~BirthdayParty();
+
+	myParty.addOrModify("mobby", "joe", "turtles");
+	myParty.addOrModify("leonardo", "mutant", "boxers");
+
+	myParty.changeGuestList(copyParty);
+
 	BirthdayType testType;
 
 	//myParty.checkGuestList("andy", "shiraki", testType);

@@ -91,3 +91,8 @@ public:
 bool combineGuestLists(const BirthdayParty & bpOne,
 	const BirthdayParty & bpTwo,
 	BirthdayParty & bpJoined);
+
+void verifyGuestList(const std::string& fsearch,
+	const std::string& lsearch,
+	const BirthdayParty& bpOne,
+	BirthdayParty& bpResult);

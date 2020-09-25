@@ -372,27 +372,80 @@ bool combineGuestLists(const BirthdayParty & bpOne,
 	const BirthdayParty & bpTwo,
 	BirthdayParty & bpJoined)
 {
-	bool collision; 
+	bool collision = false; 
 	bpJoined.~BirthdayParty(); //clear bpJoined
-	bpJoined = bpOne;
-	for (int n = 0; n < bpTwo.whosOnTheGuestList(); n++)
+	bpJoined = bpOne; //assign copy of bpOne to bpJoined
+	for (int n = 0; n < bpTwo.whosOnTheGuestList(); n++) //index through bpTwo
 	{
 		std::string first, last;
 		BirthdayType val, checkVal;
-		bpTwo.selectInvitee(n, first, last, val);
+		bpTwo.selectInvitee(n, first, last, val);//pull an invitee 
 
-		if (!bpJoined.addInvitee(first, last, val))
+		if (!bpJoined.addInvitee(first, last, val))//add invitee to the joined list. If the add function returns false it found an exact name match. execute if block
 		{
 			//check val
-			bpJoined.selectInvitee(n, first, last, checkVal);
-			if (checkVal != val)
+			bpJoined.selectInvitee(n, first, last, checkVal); //get the value of the entity in bpJoined in checkVal
+			if (checkVal != val) //if checkval and Val have discontinuity, drop that entity from the list and set the collision flag to true
 			{
 				collision = true;
 				bpJoined.dropFromGuestList(first, last);
 			}
 		}
 	}
-		if (collision == true) return false;
+		if (collision == true) return false; //return false if there was a collision 
 		else return true;
 	
+}
+
+
+void verifyGuestList(const std::string& fsearch,
+	const std::string& lsearch,
+	const BirthdayParty& bpOne,
+	BirthdayParty& bpResult)
+{
+	int selection =0 ;//selector variable
+	//transfer variables
+	std::string first, last;
+	BirthdayType val;
+
+	if (lsearch == "*" && fsearch =="*") selection = 1;
+	else if (lsearch == "*") selection = 2;
+	else if (fsearch == "*") selection = 3;
+	bpResult.~BirthdayParty(); // clear entities 
+
+	switch (selection)
+	{
+	case 1://copy the wholse list
+		bpResult = bpOne;
+		break;
+	case 2://wild card on last name 
+		for (int n = 0; n < bpOne.whosOnTheGuestList(); n++)
+		{
+			bpOne.selectInvitee(n, first, last, val);
+			if (first == fsearch)
+			{
+				bpResult.addInvitee(first, last, val);
+			}
+		}
+
+		break;
+
+	case 3://wild card on first name 
+
+		for (int n = 0; n < bpOne.whosOnTheGuestList(); n++)
+		{
+			bpOne.selectInvitee(n, first, last, val);
+			if (last == lsearch)
+			{
+				bpResult.addInvitee(first, last, val);
+			}
+		}
+		break;
+	default://specific search
+		if (bpOne.GetBirthdayType(fsearch, lsearch, val))
+		{
+			bpResult.addInvitee(fsearch, lsearch, val);
+		}
+		break;
+	}
 }

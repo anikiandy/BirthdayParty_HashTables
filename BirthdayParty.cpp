@@ -78,7 +78,9 @@ BirthdayParty::~BirthdayParty()//destructor
 
 int BirthdayParty::hash(std::string first, std::string last) const//hash by first letter of last name
 {
+	if (last.empty())return 0;
 	int key = tolower(last[0]) - 97;
+
 	return key%26;
 }
 
@@ -158,8 +160,16 @@ bool BirthdayParty::addInvitee(const std::string& firstName, const std::string& 
 //This function takes 2 string arguements and compares them alphabetically. Retrun 0 it theyre the same, Return 1 if compare comes first, Return 2 if to comes first
 int BirthdayParty::stringCompare(const std::string compare, std::string to) //compare 2 strings return 1 if compare comes first, 2 if to comes first, and 0 if theyre the same
 {
+	std::string s1;
+	if (compare.empty())
+	{
+		s1 = "a";
+	}
 	//convertcase
-	std::string s1 = makeLower(compare);
+	else
+	{
+		s1 = makeLower(compare);
+	}
 	std::string s2 = makeLower(to);
 	//check for same 
 	if (s1.compare(s2) == 0) return 0;//return 0 if the strings are the same
@@ -287,7 +297,7 @@ bool BirthdayParty::dropFromGuestList(const std::string& firstName, const std::s
 				delete del;
 				return true;
 			}
-			trailing = del->next;//point trailing over del and delete del
+			trailing->next = del->next;//point trailing over del and delete del
 			delete del;
 			return true;
 		}
@@ -398,7 +408,7 @@ bool combineGuestLists(const BirthdayParty & bpOne,
 }
 
 
-void verifyGuestList(const std::string& fsearch,
+void verifyGuestList(const std::string& fsearch, //parameters are {firstname, lastname, Birthday party to search, birthdayparty to add to}
 	const std::string& lsearch,
 	const BirthdayParty& bpOne,
 	BirthdayParty& bpResult)
@@ -415,7 +425,7 @@ void verifyGuestList(const std::string& fsearch,
 
 	switch (selection)
 	{
-	case 1://copy the wholse list
+	case 1://copy the whole list
 		bpResult = bpOne;
 		break;
 	case 2://wild card on last name 

@@ -62,7 +62,7 @@ int main()
 	}
 	std::cout << "nothing";
 
-	/*
+	
 	BirthdayParty dodgers;
 	dodgers.addInvitee("Clayton", "Kershaw", "31.0");
 	dodgers.addInvitee("Cody", "Bellinger", "11.5");
@@ -77,7 +77,7 @@ int main()
 		&& dodgers.personOnGuestList("Cody", "Bellinger")
 		&& dodgers.personOnGuestList("Justin", "Turner")
 		&& dodgers.personOnGuestList("", ""));
-		*/
+		
 
 
 	//test combineguest list

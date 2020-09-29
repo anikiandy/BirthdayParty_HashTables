@@ -53,6 +53,7 @@ BirthdayParty:: BirthdayParty(const BirthdayParty& other) //copy constructor
 	*this = other;
 
 }
+
 BirthdayParty::~BirthdayParty()//destructor 
 {
 	Bucket *del, *mark;
@@ -348,7 +349,6 @@ bool BirthdayParty::checkGuestList(const std::string& firstName, const std::stri
 	else return false;
 }
 
-
 bool BirthdayParty::GetBirthdayType(const std::string& firstName, const std::string&lastName, BirthdayType& value) const
 {
 	int key = hash(firstName, lastName);
@@ -406,7 +406,6 @@ bool combineGuestLists(const BirthdayParty & bpOne,
 		else return true;
 	
 }
-
 
 void verifyGuestList(const std::string& fsearch, //parameters are {firstname, lastname, Birthday party to search, birthdayparty to add to}
 	const std::string& lsearch,

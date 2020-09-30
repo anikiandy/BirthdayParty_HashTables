@@ -1,6 +1,6 @@
 #include <string>
 #include <iostream>
-typedef std::string BirthdayType;
+typedef int BirthdayType;
 
 struct Bucket
 {

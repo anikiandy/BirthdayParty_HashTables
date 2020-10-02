@@ -3,6 +3,17 @@
 #include "BirthdayParty.h"
 #include "assert.h"
 
+void spamList(BirthdayParty bp)
+{
+	for (int n = 0; n < bp.whosOnTheGuestList(); n++)
+	{
+		std::string first;
+		std::string last;
+		BirthdayType val;
+		bp.selectInvitee(n, first, last, val);
+		std::cout << first << " " << last << " " << val << std::endl;
+	}
+}
 
 
 int main()
@@ -22,34 +33,15 @@ int main()
 	theLastDance.addInvitee("Dennis", "Rodman", 91);
 	theLastDance.addInvitee("Luc", "Longley", 13);
 	theLastDance.addInvitee("Ron", "Harper", 9);
-	for (int n = 0; n < theLastDance.whosOnTheGuestList(); n++)
-	{
-		std::string first;
-		std::string last;
-		BirthdayType val;
-		theLastDance.selectInvitee(n, first, last, val);
-		std::cout << first << " " << last << " " << val << std::endl;
-	}
+	spamList(theLastDance);
 
 
-	BirthdayParty copyParty = BirthdayParty(myParty);
+	BirthdayParty copyParty = BirthdayParty(theLastDance);
 	myParty.~BirthdayParty();
-
 	myParty.addOrModify("Andrew", "Shiraki", 1);
-
 	myParty.changeGuestList(copyParty);
-
-
-	std::cout << "-------------end birthday party---------------\n";
-
-	for (int n = 0; n < copyParty.whosOnTheGuestList(); n++)
-	{
-		std::string first;
-		std::string last;
-		BirthdayType val;
-		copyParty.selectInvitee(n, first, last, val);
-		std::cout << first << " " << last << " " << val << std::endl;
-	}
+	std::cout << "----------------------------\n";
+	spamList(copyParty);
 	
 	BirthdayParty dodgers;
 	dodgers.addInvitee("Clayton", "Kershaw", 31);
@@ -76,17 +68,21 @@ int main()
 	bp1.addInvitee("Kobe", "Bryant", 8);
 	bp1.addInvitee("Gianna", "Bryant", 19);
 	bp1.addInvitee("Pau", "gasol", 24);
-	bp1.addInvitee("Kobe", "Jeans", 12);
+	bp1.addInvitee("Kobe", "bean", 12);
 	//combineGuestLists(bp1, bp2, bp3);
 	verifyGuestList("Kobe", "*", bp1, bp3);
 	
-	for (int n = 0; n < bp3.whosOnTheGuestList(); n++)
-	{
-		std::string first;
-		std::string last;
-		BirthdayType val;
-		bp3.selectInvitee(n, first, last, val);
-		std::cout << first << " " << last << " " << val << std::endl;
-	}
+	spamList(bp3);
+	std::cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+	bp3.dropFromGuestList("Kobe", "Bryant");
+	bp3.addInvitee("Andrew", "Shiraki", 1);
+	bp3.addInvitee("Olive", "Shiraki", 5);
+	bp3.addInvitee("", "Blanky", 5);
+	bp3.addInvitee("blankerson", "", 23);
+
+	spamList(bp3);
+	std::cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+	spamList(bp1);
+
 	return 0;
 }

@@ -164,7 +164,7 @@ int BirthdayParty::stringCompare(const std::string compare, std::string to) //co
 	std::string s1;
 	if (compare.empty())
 	{
-		s1 = "a";
+		s1 = "Z";
 	}
 	//convertcase
 	else
@@ -323,6 +323,7 @@ bool BirthdayParty::personOnGuestList(const std::string& firstName, const std::s
 	}
 	return false;
 }
+
 // Return true if the full name is equal to a full name
 // currently in the list, otherwise false.
 

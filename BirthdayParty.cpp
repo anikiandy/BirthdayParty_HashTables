@@ -374,7 +374,7 @@ void BirthdayParty::changeGuestList(BirthdayParty& other)
 	temp = BirthdayParty(other);
 	other = *this;
 	*this = temp;
-	temp.~BirthdayParty();
+//	temp.~BirthdayParty();
 
 }
 

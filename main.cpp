@@ -74,7 +74,7 @@ int main()
 	
 	spamList(bp3);
 	std::cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-	bp3.dropFromGuestList("Kobe", "Bryant");
+	bp3.dropFromGuestList("Kobe", "123");
 	bp3.addInvitee("Andrew", "Shiraki", 1);
 	bp3.addInvitee("Olive", "Shiraki", 5);
 	bp3.addInvitee("", "Blanky", 5);

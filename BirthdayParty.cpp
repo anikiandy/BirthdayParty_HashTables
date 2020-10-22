@@ -14,7 +14,7 @@ BirthdayParty::BirthdayParty() // Create an empty BirthdayParty list
 
   const BirthdayParty& BirthdayParty ::operator = ( const BirthdayParty& rhs)
 {
-	  this->~BirthdayParty(); //clear all memory 
+	 // this->~BirthdayParty(); //clear all memory 
 
 	  Bucket *inspect, *copyBucket, *copyPointer;
 	  for (int i = 0; i < this->slots; i++)//iterate down slots to copy linked lists
@@ -79,7 +79,7 @@ BirthdayParty::~BirthdayParty()//destructor
 
 int BirthdayParty::hash(std::string first, std::string last) const//hash by first letter of last name
 {
-	if (last.empty())return 0;
+	if (last.empty()|| !isalpha(last[0]))return 0;
 	int key = tolower(last[0]) - 97;
 
 	return key%26;
@@ -384,7 +384,7 @@ bool combineGuestLists(const BirthdayParty & bpOne,
 	BirthdayParty & bpJoined)
 {
 	bool collision = false; 
-	bpJoined.~BirthdayParty(); //clear bpJoined
+	//bpJoined.~BirthdayParty(); //clear bpJoined
 	bpJoined = bpOne; //assign copy of bpOne to bpJoined
 	for (int n = 0; n < bpTwo.whosOnTheGuestList(); n++) //index through bpTwo
 	{
@@ -421,7 +421,7 @@ void verifyGuestList(const std::string& fsearch, //parameters are {firstname, la
 	if (lsearch == "*" && fsearch =="*") selection = 1;
 	else if (lsearch == "*") selection = 2;
 	else if (fsearch == "*") selection = 3;
-	bpResult.~BirthdayParty(); // clear entities 
+	//bpResult.~BirthdayParty(); // clear entities 
 
 	switch (selection)
 	{

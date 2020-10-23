@@ -1,4 +1,5 @@
-#ifndef BirthdayParty
+#ifndef BIRTHDAYPARTY_H
+#define BIRTHDAYPARTY_H
 #include <string>
 #include <iostream>
 typedef std::string BirthdayType;

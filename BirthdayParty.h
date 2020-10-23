@@ -1,6 +1,7 @@
+#ifndef BirthdayParty
 #include <string>
 #include <iostream>
-typedef int BirthdayType;
+typedef std::string BirthdayType;
 
 struct Bucket
 {
@@ -96,3 +97,5 @@ void verifyGuestList(const std::string& fsearch,
 	const std::string& lsearch,
 	const BirthdayParty& bpOne,
 	BirthdayParty& bpResult);
+
+#endif

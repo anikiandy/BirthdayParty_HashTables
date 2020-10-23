@@ -143,7 +143,7 @@ bool BirthdayParty::addInvitee(const std::string& firstName, const std::string& 
 			{
 				add->next = inspect;
 				trailing->next = add;
-				std::cout << "firstname thing";
+				//std::cout << "firstname thing";
 				return true;
 			
 			}

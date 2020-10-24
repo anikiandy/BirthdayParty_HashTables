@@ -383,14 +383,17 @@ bool combineGuestLists(const BirthdayParty & bpOne,
 	const BirthdayParty & bpTwo,
 	BirthdayParty & bpJoined)
 {
+	//copy inputs
+	BirthdayParty copy1 = BirthdayParty(bpOne);
+	BirthdayParty copy2 = BirthdayParty(bpTwo);
 	bool collision = false; 
-	//bpJoined.~BirthdayParty(); //clear bpJoined
-	bpJoined = bpOne; //assign copy of bpOne to bpJoined
-	for (int n = 0; n < bpTwo.whosOnTheGuestList(); n++) //index through bpTwo
+	bpJoined.~BirthdayParty(); //clear bpJoined
+	bpJoined = copy1; //assign copy of bpOne to bpJoined
+	for (int n = 0; n < copy2.whosOnTheGuestList(); n++) //index through bpTwo
 	{
 		std::string first, last;
 		BirthdayType val, checkVal;
-		bpTwo.selectInvitee(n, first, last, val);//pull an invitee 
+		copy2.selectInvitee(n, first, last, val);//pull an invitee 
 
 		if (!bpJoined.addInvitee(first, last, val))//add invitee to the joined list. If the add function returns false it found an exact name match. execute if block
 		{

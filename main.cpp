@@ -87,7 +87,7 @@ int main()
 	return 0;
 }
 */
-// – Fall 2020 E.Ambrosio
+// ?Fall 2020 E.Ambrosio
 //Project 2: The Year of the Quarantine Testing
 //There were 100 test cases.Each test was worth 1.3 points each; to run the test cases :
 //1. Remove the main routine from your BirthdayParty.cpp file.
@@ -135,7 +135,7 @@ std::string ARRAYLNAME[6] = {
 std::string("11"), std::string("21"), std::string("31"),
 std::string("41"), std::string("51"), std::string("61")
 };
-// – Fall 2020 E.Ambrosio
+// ?Fall 2020 E.Ambrosio
 BirthdayType SOMEVALUE = "junk";
 BirthdayType DEFAULTV = BirthdayType();
 BirthdayType ARRAYV[6] = {
@@ -174,7 +174,7 @@ void testone(int n)
 		assert(checkGuestList3type(&BirthdayParty::checkGuestList)
 		);
 	} break; case 5: {
-		// – Fall 2020 E.Ambrosio
+		// ?Fall 2020 E.Ambrosio
 		assert(selectInvitee4type(&BirthdayParty::selectInvitee));
 	} break; case 6: {
 		assert(m.noInvitees());
@@ -221,7 +221,7 @@ void testone(int n)
 	} break; case 19: {
 		m.addInvitee(ARRAYFNAME[0], ARRAYLNAME[0],
 			SOMEVALUE);
-		// – Fall 2020 E.Ambrosio
+		// ?Fall 2020 E.Ambrosio
 		BirthdayType v = DEFAULTV;
 		assert(!m.checkGuestList(ARRAYFNAME[1],
 			ARRAYLNAME[1], v));
@@ -268,7 +268,7 @@ void testone(int n)
 		assert(has(m, ARRAYFNAME[0], ARRAYLNAME[0],
 			ARRAYV[0]) && has(m, ARRAYFNAME[1], ARRAYLNAME[1], ARRAYV[1]));
 	} break; case 26: {
-		// – Fall 2020 E.Ambrosio
+		// ?Fall 2020 E.Ambrosio
 		m.addInvitee(ARRAYFNAME[0], ARRAYLNAME[0],
 			SOMEVALUE);
 		m.addInvitee(ARRAYFNAME[1], ARRAYLNAME[1],
@@ -316,7 +316,7 @@ void testone(int n)
 			ARRAYV[0]);
 		m.addInvitee(ARRAYFNAME[1], ARRAYLNAME[1],
 			ARRAYV[1]);
-		// – Fall 2020 E.Ambrosio
+		// ?Fall 2020 E.Ambrosio
 		m.addInvitee(ARRAYFNAME[2], ARRAYLNAME[2],
 			ARRAYV[2]);
 		m.modifyInvitee(ARRAYFNAME[1], ARRAYLNAME[1],
@@ -363,7 +363,7 @@ void testone(int n)
 	} break; case 36: {
 		m.addInvitee(ARRAYFNAME[0], ARRAYLNAME[0],
 			ARRAYV[0]);
-		// – Fall 2020 E.Ambrosio
+		// ?Fall 2020 E.Ambrosio
 		m.addInvitee(ARRAYFNAME[1], ARRAYLNAME[1],
 			ARRAYV[1]);
 		assert(!m.modifyInvitee(ARRAYFNAME[2],
@@ -411,7 +411,7 @@ void testone(int n)
 			ARRAYV[0]));
 		assert(m.addInvitee(ARRAYFNAME[1], ARRAYLNAME[1],
 			ARRAYV[1]));
-		// – Fall 2020 E.Ambrosio
+		// ?Fall 2020 E.Ambrosio
 		assert(m.addOrModify(ARRAYFNAME[0], ARRAYLNAME[0],
 			ARRAYV[2]));
 	} break; case 43: {
@@ -459,7 +459,7 @@ void testone(int n)
 			ARRAYV[0]);
 		m.addInvitee(ARRAYFNAME[1], ARRAYLNAME[1],
 			ARRAYV[1]);
-		// – Fall 2020 E.Ambrosio
+		// ?Fall 2020 E.Ambrosio
 		assert(m.dropFromGuestList(ARRAYFNAME[1],
 			ARRAYLNAME[1]));
 	} break; case 48: {
@@ -506,7 +506,7 @@ void testone(int n)
 			has(m, ARRAYFNAME[3], ARRAYLNAME[3],
 				ARRAYV[3]) && !m.personOnGuestList(ARRAYFNAME[1], ARRAYLNAME[1])
 			&&
-			// – Fall 2020 E.Ambrosio
+			// ?Fall 2020 E.Ambrosio
 			!m.personOnGuestList(ARRAYFNAME[2],
 				ARRAYLNAME[2]));
 	} break; case 52: {
@@ -553,7 +553,7 @@ void testone(int n)
 		std::string l = SOMELNAME;
 		BirthdayType v = SOMEVALUE;
 		m.selectInvitee(2, f, l, v);
-		// – Fall 2020 E.Ambrosio
+		// ?Fall 2020 E.Ambrosio
 		assert(f == SOMEFNAME && l == SOMELNAME && v ==
 			SOMEVALUE);
 	} break; case 57: {
@@ -600,7 +600,7 @@ void testone(int n)
 			BirthdayParty m2;
 			m2.addInvitee(ARRAYFNAME[2], ARRAYLNAME[2],
 				ARRAYV[2]);
-			// – Fall 2020 E.Ambrosio
+			// ?Fall 2020 E.Ambrosio
 			m2.addInvitee(ARRAYFNAME[3], ARRAYLNAME[3],
 				ARRAYV[3]);
 			m2.addInvitee(ARRAYFNAME[1], ARRAYLNAME[1],
@@ -648,7 +648,7 @@ void testone(int n)
 				!m2.personOnGuestList(ARRAYFNAME[2],
 					ARRAYLNAME[2]) && !m2.personOnGuestList(ARRAYFNAME[3],
 						ARRAYLNAME[3]));
-			// – Fall 2020 E.Ambrosio
+			// ?Fall 2020 E.Ambrosio
 		}
 	} break; case 65: {
 		m.addInvitee(ARRAYFNAME[0], ARRAYLNAME[0],
@@ -695,7 +695,7 @@ void testone(int n)
 				ARRAYV[2]);
 			m2.dropFromGuestList(ARRAYFNAME[1],
 				ARRAYLNAME[1]);
-			// – Fall 2020 E.Ambrosio
+			// ?Fall 2020 E.Ambrosio
 			m2.addInvitee(ARRAYFNAME[3], ARRAYLNAME[3],
 				ARRAYV[3]);
 			m2.dropFromGuestList(ARRAYFNAME[2],
@@ -742,7 +742,7 @@ void testone(int n)
 			BirthdayParty m2;
 			m2.addInvitee(ARRAYFNAME[0], ARRAYLNAME[0],
 				ARRAYV[0]);
-			// – Fall 2020 E.Ambrosio
+			// ?Fall 2020 E.Ambrosio
 			m2.addInvitee(ARRAYFNAME[1], ARRAYLNAME[1],
 				ARRAYV[1]);
 			m2.addInvitee(ARRAYFNAME[2], ARRAYLNAME[2],
@@ -790,7 +790,7 @@ void testone(int n)
 			BirthdayParty m2(m);
 			m2.addInvitee(ARRAYFNAME[3], ARRAYLNAME[3],
 				ARRAYV[3]);
-			// – Fall 2020 E.Ambrosio
+			// ?Fall 2020 E.Ambrosio
 			assert(m2.whosOnTheGuestList() == 4 &&
 				m2.personOnGuestList(ARRAYFNAME[1], ARRAYLNAME[1]) &&
 				!m2.personOnGuestList(ARRAYFNAME[4], ARRAYLNAME[4]));
@@ -838,7 +838,7 @@ void testone(int n)
 		m.addInvitee(ARRAYFNAME[1], ARRAYLNAME[1],
 			ARRAYV[1]);
 		{
-			// – Fall 2020 E.Ambrosio
+			// ?Fall 2020 E.Ambrosio
 			BirthdayParty m2;
 			m2.addInvitee(ARRAYFNAME[3], ARRAYLNAME[3],
 				ARRAYV[3]);
@@ -886,7 +886,7 @@ void testone(int n)
 			BirthdayParty m2;
 			m2.addInvitee(ARRAYFNAME[0], ARRAYLNAME[0],
 				ARRAYV[0]);
-			// – Fall 2020 E.Ambrosio
+			// ?Fall 2020 E.Ambrosio
 			m2.addInvitee(ARRAYFNAME[1], ARRAYLNAME[1],
 				ARRAYV[1]);
 			m2.addInvitee(ARRAYFNAME[2], ARRAYLNAME[2],
@@ -933,7 +933,7 @@ void testone(int n)
 		BirthdayParty m2;
 		BirthdayParty m3;
 		combineGuestLists(m, m2, m3);
-		// – Fall 2020 E.Ambrosio
+		// ?Fall 2020 E.Ambrosio
 		assert(m3.personOnGuestList(ARRAYFNAME[0],
 			ARRAYLNAME[0]) &&
 			m3.personOnGuestList(ARRAYFNAME[1],
@@ -981,7 +981,7 @@ void testone(int n)
 			m3.personOnGuestList(ARRAYFNAME[4],
 				ARRAYLNAME[4]));
 	} break; case 82: {
-		// – Fall 2020 E.Ambrosio
+		// ?Fall 2020 E.Ambrosio
 		m.addInvitee(ARRAYFNAME[0], ARRAYLNAME[0],
 			ARRAYV[0]);
 		m.addInvitee(ARRAYFNAME[1], ARRAYLNAME[1],
@@ -1028,7 +1028,7 @@ void testone(int n)
 	} break; case 84: {
 		m.addInvitee(ARRAYFNAME[0], ARRAYLNAME[0],
 			ARRAYV[0]);
-		// – Fall 2020 E.Ambrosio
+		// ?Fall 2020 E.Ambrosio
 		m.addInvitee(ARRAYFNAME[1], ARRAYLNAME[1],
 			ARRAYV[1]);
 		m.addInvitee(ARRAYFNAME[2], ARRAYLNAME[2],
@@ -1076,7 +1076,7 @@ void testone(int n)
 			ARRAYV[3]);
 		m2.addInvitee(ARRAYFNAME[2], ARRAYLNAME[2],
 			ARRAYV[2]);
-		// – Fall 2020 E.Ambrosio
+		// ?Fall 2020 E.Ambrosio
 		BirthdayParty m3;
 		assert(combineGuestLists(m, m2, m3));
 	} break; case 87: {
@@ -1123,7 +1123,7 @@ void testone(int n)
 		BirthdayParty m2;
 		m2.addInvitee(ARRAYFNAME[3], ARRAYLNAME[3],
 			ARRAYV[3]);
-		// – Fall 2020 E.Ambrosio
+		// ?Fall 2020 E.Ambrosio
 		m2.addInvitee(ARRAYFNAME[4], ARRAYLNAME[4],
 			ARRAYV[4]);
 		combineGuestLists(m, m2, m);
@@ -1170,7 +1170,7 @@ void testone(int n)
 		BirthdayParty m2;
 		m2.addInvitee(ARRAYFNAME[0], ARRAYLNAME[0],
 			ARRAYV[0]);
-		// – Fall 2020 E.Ambrosio
+		// ?Fall 2020 E.Ambrosio
 		verifyGuestList(ARRAYFNAME[1], ARRAYLNAME[1], m,
 			m2);
 		assert(!m2.personOnGuestList(ARRAYFNAME[0],
@@ -1217,7 +1217,7 @@ void testone(int n)
 			ARRAYLNAME[1]) &&
 			m2.personOnGuestList(ARRAYFNAME[1],
 				ARRAYLNAME[1]) &&
-			// – Fall 2020 E.Ambrosio
+			// ?Fall 2020 E.Ambrosio
 			m2.personOnGuestList(ARRAYFNAME[2],
 				ARRAYLNAME[1]) &&
 			!m2.personOnGuestList(ARRAYFNAME[0],
@@ -1265,7 +1265,7 @@ void testone(int n)
 			ARRAYLNAME[1]) &&
 			m2.personOnGuestList(ARRAYFNAME[1],
 				ARRAYLNAME[1]) &&
-			// – Fall 2020 E.Ambrosio
+			// ?Fall 2020 E.Ambrosio
 			m2.personOnGuestList(ARRAYFNAME[2],
 				ARRAYLNAME[1]) &&
 			m2.personOnGuestList(ARRAYFNAME[0],
